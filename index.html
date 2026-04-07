@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NeuroSolution — Investor Deck · April 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#070709;--bg2:#0e0e12;--bg3:#141418;--bg4:#1a1a20;
+  --gold:#c9a84c;--gold-l:#e8c97a;--gold-d:#6a5520;--gold-f:rgba(201,168,76,0.06);
+  --teal:#00b894;--teal-d:#00997a;--teal-f:rgba(0,184,148,0.08);
+  --red:#e74c3c;--orange:#f39c12;--blue:#3498db;--purple:#9b59b6;--pink:#e84393;--emerald:#00b894;--cyan:#00cec9;--rose:#fd79a8;
+  --text:#f0f0f2;--text2:#a0a0ac;--text3:#606070;
+  --border:rgba(201,168,76,0.12);--border2:rgba(201,168,76,0.06);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'Space Mono',monospace;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 36px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,9,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2)}
+.nav-logo{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase}
+.nav-meta{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.08em}
+
+/* ── SLIDES ── */
+.slides{padding-top:52px}
+.slide{min-height:100vh;padding:80px 48px;display:flex;align-items:center;position:relative;overflow:hidden}
+.slide::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.08),transparent)}
+.slide:last-child::after{display:none}
+.slide-inner{max-width:1140px;margin:0 auto;width:100%;position:relative;z-index:2}
+.slide-num{position:absolute;top:24px;left:36px;width:28px;height:28px;border-radius:50%;border:1px solid var(--gold-d);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--gold-d);opacity:.6;z-index:3}
+
+/* ── TYPOGRAPHY ── */
+.label{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px}
+.title{font-family:var(--serif);font-size:clamp(34px,5vw,62px);font-weight:700;line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px}
+.subtitle{font-family:var(--sans);font-size:15px;color:var(--text2);line-height:1.85;max-width:640px;margin-bottom:44px}
+
+/* ── CARDS ── */
+.grid{display:grid;gap:16px;margin-bottom:32px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:26px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card-gold::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.card-teal::before{background:linear-gradient(90deg,var(--teal),transparent)}
+.card-red::before{background:linear-gradient(90deg,var(--red),transparent)}
+.card-blue::before{background:linear-gradient(90deg,var(--blue),transparent)}
+.card-purple::before{background:linear-gradient(90deg,var(--purple),transparent)}
+.card-pink::before{background:linear-gradient(90deg,var(--pink),transparent)}
+.card-emerald::before{background:linear-gradient(90deg,var(--emerald),transparent)}
+.card-orange::before{background:linear-gradient(90deg,var(--orange),transparent)}
+.card-cyan::before{background:linear-gradient(90deg,var(--cyan),transparent)}
+.card h3{font-family:var(--sans);font-size:15px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13px;color:var(--text2);line-height:1.75}
+.tag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;margin-top:12px}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:36px}
+.stat{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:22px 16px;text-align:center}
+.stat-v{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1;margin-bottom:6px}
+.stat-l{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.08em;line-height:1.4;text-transform:uppercase}
+
+/* ── CALLOUT ── */
+.callout{border-radius:var(--r);padding:24px 28px;margin-bottom:28px;border:1px solid}
+.callout h4{font-size:14px;font-weight:700;margin-bottom:10px}
+.callout p,.callout li{font-size:13px;line-height:1.8;color:var(--text2)}
+.callout ul{list-style:none;margin-top:10px}
+.callout li{margin-bottom:5px;padding-left:20px;position:relative}
+.callout li::before{content:'→';position:absolute;left:0;font-weight:700}
+.co-gold{background:var(--gold-f);border-color:rgba(201,168,76,0.15)}
+.co-gold h4,.co-gold li::before{color:var(--gold)}
+.co-teal{background:var(--teal-f);border-color:rgba(0,184,148,0.15)}
+.co-teal h4,.co-teal li::before{color:var(--teal)}
+
+/* ── MARKET BOX ── */
+.mbox{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;margin-bottom:28px;border-left:3px solid var(--gold)}
+.mbox-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.mbox-val{font-family:var(--serif);font-size:40px;font-weight:700;line-height:1;margin-bottom:8px}
+.mbox-desc{font-size:13px;color:var(--text2);line-height:1.75}
+
+/* ── PILLAR GRID ── */
+.pillar{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:24px;border-top:3px solid var(--teal)}
+.pillar-n{font-family:var(--serif);font-size:36px;color:var(--gold);opacity:.5;line-height:1;margin-bottom:8px}
+.pillar h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.pillar .who{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.06em;margin-bottom:10px}
+.pillar p{font-size:12.5px;color:var(--text2);line-height:1.7}
+
+/* ── TAM BARS ── */
+.tam-row{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.tam-label{flex:0 0 180px;text-align:right;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--text2)}
+.tam-wrap{flex:1;height:30px;background:var(--bg3);border-radius:6px;overflow:hidden}
+.tam-bar{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-family:var(--mono);font-size:10px;font-weight:700;color:#fff;min-width:50px}
+.tam-val{flex:0 0 80px;font-family:var(--serif);font-size:18px;font-weight:700;text-align:right}
+
+/* ── TWO-COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+
+/* ── FLYWHEEL ROW ── */
+.fw{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--bg3);border-radius:var(--r);margin-bottom:6px;border:1px solid var(--border2);font-size:13px}
+.fw-from{font-weight:700;color:var(--text);min-width:180px}
+.fw-to{color:var(--text2)}
+.fw-val{font-family:var(--serif);font-weight:700;color:var(--gold);min-width:110px;text-align:right;font-size:15px}
+
+/* ── REGION ── */
+.region{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid var(--border2)}
+.region:last-child{border-bottom:none}
+.region-name{flex:0 0 200px;font-family:var(--serif);font-size:17px;font-weight:700}
+.region-desc{flex:1;font-size:13px;color:var(--text2)}
+.region-phase{flex:0 0 60px;text-align:right;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.06em}
+
+/* ── GLOW EFFECTS ── */
+.glow-teal::after{content:'';position:absolute;top:-20%;right:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,184,148,0.04) 0%,transparent 70%);pointer-events:none}
+.glow-gold::after{content:'';position:absolute;bottom:-20%;left:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.04) 0%,transparent 70%);pointer-events:none}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.35s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){.g2,.g3,.g4,.two-col{grid-template-columns:1fr}.slide{padding:60px 20px}.tam-label{flex:0 0 100px;font-size:10px}}
+@media(max-width:600px){.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">NeuroSolution</div>
+  <div class="nav-meta" id="counter">01 / 14</div>
+</nav>
+
+<main class="slides">
+
+<!-- ══════════════════════════════════════════
+     SLIDE 1 — COVER
+═══════════════════════════════════════════ -->
+<section class="slide" id="s1" style="background:radial-gradient(ellipse at 30% 40%,#0d0d14 0%,var(--bg) 70%)">
+  <div class="slide-num">01</div>
+  <div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh">
+    <div class="reveal" style="font-family:var(--mono);font-size:9px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;padding:8px 24px;border:1px solid rgba(201,168,76,0.2);border-radius:24px;background:rgba(201,168,76,0.04);margin-bottom:40px;display:inline-block">CONFIDENTIAL — INVESTOR PRESENTATION</div>
+    <h1 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(48px,8vw,88px);font-weight:700;line-height:1.02;letter-spacing:-0.03em;margin-bottom:20px">Neuro<span style="color:var(--teal)">Solution</span></h1>
+    <p class="reveal reveal-d2" style="font-family:var(--sans);font-size:16px;color:var(--text2);max-width:540px;margin:0 auto 20px;line-height:1.8">The operating system for a new category of healthcare — functional neurology delivered at scale through telehealth, global institutes, and a certified clinician network.</p>
+    <p class="reveal reveal-d2" style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.06em;margin-bottom:0">One science. Ten markets. Four pillars. No competitor has all four.</p>
+    <p class="reveal reveal-d3" style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:60px;letter-spacing:0.1em">APRIL 2026</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 2 — THE PROBLEM
+═══════════════════════════════════════════ -->
+<section class="slide glow-gold" id="s2">
+  <div class="slide-num">02</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--red)">THE PROBLEM</div>
+    <div class="title reveal reveal-d1">Traditional Medicine Has Failed<br>Neurological Patients</div>
+    <div class="subtitle reveal reveal-d2">Neurodevelopmental care is broken. Families navigate a patchwork of disconnected, symptom-based services with no unified protocol — while the conditions that need treatment most are growing fastest. Current approaches treat <em>behaviors</em>, not <em>brains</em>.</div>
+
+    <div class="grid g3 reveal reveal-d2">
+      <div class="card card-red">
+        <h3>Fragmented &amp; Symptom-Based</h3>
+        <p>ABA, OT/PT, Speech, and medication exist in silos. No unified protocol addresses root neurological function. The standard of care hasn't meaningfully changed in decades.</p>
+        <div class="tag" style="background:rgba(231,76,60,.12);color:var(--red)">Broken Model</div>
+      </div>
+      <div class="card card-orange">
+        <h3>Workforce &amp; Cost Crisis</h3>
+        <p>Specialist shortages create waitlists of 12–18+ months. ABA therapy costs $40K–$80K/year with rigid 30–40 hour/week in-clinic schedules. The neurological window is closing while families wait.</p>
+        <div class="tag" style="background:rgba(243,156,18,.12);color:var(--orange)">Inaccessible</div>
+      </div>
+      <div class="card card-blue">
+        <h3>Global Access Gap</h3>
+        <p>The majority of families worldwide cannot access meaningful, consistent therapy — especially outside major metro areas. No scalable delivery model for brain-based rehabilitation exists at the population level.</p>
+        <div class="tag" style="background:rgba(52,152,219,.12);color:var(--blue)">Unscalable</div>
+      </div>
+    </div>
+
+    <div class="two-col reveal reveal-d3" style="gap:40px;align-items:start">
+      <div>
+        <div class="stats" style="grid-template-columns:1fr 1fr;margin-bottom:24px">
+          <div class="stat"><div class="stat-v" style="color:var(--red)">1 in 31</div><div class="stat-l">U.S. Children with ASD<br>(CDC 2025)</div></div>
+          <div class="stat"><div class="stat-v" style="color:var(--red)">69M</div><div class="stat-l">TBI Cases Per Year<br>Globally</div></div>
+          <div class="stat"><div class="stat-v" style="color:var(--red)">7M+</div><div class="stat-l">Americans with<br>Alzheimer's</div></div>
+          <div class="stat"><div class="stat-v" style="color:var(--red)">$384B</div><div class="stat-l">Annual Alzheimer's<br>Cost (US)</div></div>
+        </div>
+        <div class="callout" style="background:rgba(231,76,60,.05);border-color:rgba(231,76,60,.15);margin-bottom:0">
+          <h4 style="color:var(--red)">Why This Persists</h4>
+          <p>The pharmaceutical industry built the most comprehensive information control system in modern healthcare — determining what physicians learn, what insurance covers, and what patients are told is possible. Roughly 5% of Americans know that a non-pharmaceutical path to neurological restoration exists — and works. NeuroSolution is the infrastructure that changes that.</p>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:var(--mono);font-size:8px;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:14px">THE CAPTURED ECOSYSTEM</div>
+        <svg viewBox="0 0 440 440" width="100%" style="max-width:400px" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="cg0" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e1200"/><stop offset="100%" stop-color="#0f0800"/></radialGradient>
+            <radialGradient id="nd0" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e1e1e"/><stop offset="100%" stop-color="#111"/></radialGradient>
+            <marker id="arr0" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="rgba(201,168,76,0.3)"/></marker>
+          </defs>
+          <!-- Background rings -->
+          <circle cx="220" cy="220" r="200" fill="none" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+          <circle cx="220" cy="220" r="140" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="1"/>
+          <circle cx="220" cy="220" r="80" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+          <!-- Radial lines -->
+          <line x1="220" y1="220" x2="220" y2="35" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="370" y2="95" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="400" y2="250" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="330" y2="380" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="120" y2="395" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="40" y2="320" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="40" y2="170" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <line x1="220" y1="220" x2="100" y2="65" stroke="rgba(201,168,76,0.18)" stroke-width="1" stroke-dasharray="3,4" marker-end="url(#arr0)"/>
+          <!-- Outer ring connector -->
+          <path d="M220,35 Q370,35 370,95 Q415,170 400,250 Q385,345 330,380 Q265,415 120,395 Q55,375 40,320 Q18,250 40,170 Q50,95 100,65 Q145,35 220,35" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="1" stroke-dasharray="2,5"/>
+          <!-- Core -->
+          <circle cx="220" cy="220" r="56" fill="url(#cg0)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+          <circle cx="220" cy="220" r="48" fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="1"/>
+          <text x="220" y="213" text-anchor="middle" font-family="Space Mono" font-size="10" fill="#c9a84c" letter-spacing="0.05em">BIG PHARMA</text>
+          <text x="220" y="228" text-anchor="middle" font-family="Space Mono" font-size="8" fill="rgba(201,168,76,0.5)">$1.6 TRILLION</text>
+          <text x="220" y="240" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="rgba(201,168,76,0.35)">ANNUALLY</text>
+          <!-- Outer nodes -->
+          <circle cx="220" cy="35" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="220" y="31" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">MEDICAL</text>
+          <text x="220" y="42" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">SCHOOLS</text>
+          <circle cx="370" cy="95" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="370" y="91" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">FDA /</text>
+          <text x="370" y="102" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">REGULATORS</text>
+          <circle cx="400" cy="250" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="400" y="246" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">INSURANCE</text>
+          <text x="400" y="257" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">COMPANIES</text>
+          <circle cx="330" cy="380" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="330" y="376" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">HOSPITAL</text>
+          <text x="330" y="387" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">SYSTEMS</text>
+          <circle cx="120" cy="395" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="120" y="391" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">CLINICAL</text>
+          <text x="120" y="402" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">JOURNALS</text>
+          <circle cx="40" cy="320" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="40" y="316" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">CONGRESS /</text>
+          <text x="40" y="327" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">LOBBYING</text>
+          <circle cx="40" cy="170" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="40" y="164" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">DIAGNOSTIC</text>
+          <text x="40" y="175" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">STANDARDS</text>
+          <circle cx="100" cy="65" r="30" fill="url(#nd0)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <text x="100" y="61" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">MEDIA &amp;</text>
+          <text x="100" y="72" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#999">ADVERTISING</text>
+          <!-- Bottom label -->
+          <text x="220" y="432" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="rgba(201,168,76,0.2)" letter-spacing="0.16em">DESIGNED TO CAPTURE</text>
+        </svg>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:10px;line-height:1.7">Centralized. Closed. Monetizes dysfunction.<br>Controls who knows what is possible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 3 — THE SOLUTION + TEAM
+═══════════════════════════════════════════ -->
+<section class="slide glow-teal" id="s3">
+  <div class="slide-num">03</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--teal)">THE SOLUTION</div>
+    <div class="title reveal reveal-d1">Four Pillars. One Protocol Engine.<br>No Competitor Has All Four.</div>
+    <div class="subtitle reveal reveal-d2">Dr. Kyle Daigle and his team built what traditional medicine hasn't — a vertically integrated neurological operating system that organizes brain performance, recovery, and regeneration across conditions.</div>
+
+    <div class="grid g4 reveal reveal-d2">
+      <div class="pillar">
+        <div class="pillar-n">I</div>
+        <h4>Dr. Kyle Daigle</h4>
+        <div class="who">Protocol Architect · Founder</div>
+        <p>Creator of Systemic Neural Adaptation (SNA). 4 operational clinics across 2 countries. Connects all pillars into a single actionable treatment framework.</p>
+      </div>
+      <div class="pillar" style="border-top-color:var(--purple)">
+        <div class="pillar-n">II</div>
+        <h4>Dr. Brandon Brock</h4>
+        <div class="who">Harvard PhD · Neuroimmunology</div>
+        <p>PANS/PANDAS, neuroimmune activation, autoimmune brain dysfunction. The diagnostic backbone — lab frameworks and immune-based treatment pathways.</p>
+      </div>
+      <div class="pillar" style="border-top-color:var(--cyan)">
+        <div class="pillar-n">III</div>
+        <h4>Dr. Jared Segler</h4>
+        <div class="who">Sinus-Brain · Mold-Fungal Axis</div>
+        <p>The "missing link" in neuro dysfunction: Nose → Olfactory Nerve → Limbic Brain. Unlocks intranasal delivery for stem cells and exosomes.</p>
+      </div>
+      <div class="pillar" style="border-top-color:var(--gold)">
+        <div class="pillar-n">IV</div>
+        <h4>Nutrition Collective</h4>
+        <div class="who">4,500+ Practitioners Worldwide</div>
+        <p>Pre-built global distribution across Europe, Middle East, and beyond. Day 1 market for certification, protocol adoption, and platform licensing.</p>
+      </div>
+    </div>
+
+    <div class="callout co-teal reveal reveal-d3">
+      <h4>Proprietary IP — Systemic Neural Adaptation (SNA)</h4>
+      <p>Noninvasive neurochemical activation through modulated visual, auditory, and physical stimulus. Deliberate Dopamine and Serotonin modulation targeting VTA, Nucleus Accumbens, and Raphe Nuclei — the exact pathways dysregulated in autism, ADHD, TBI, addiction, and neurodegeneration. Delivered through NeuroSage Hub, an AI-powered clinical platform. The IP is not one pillar — it is the integration of all four.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 4 — THE PROOF
+═══════════════════════════════════════════ -->
+<section class="slide glow-gold" id="s4">
+  <div class="slide-num">04</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--gold)">THE PROOF</div>
+    <div class="title reveal reveal-d1">This Isn't Theory.<br>It's Working Today.</div>
+    <div class="subtitle reveal reveal-d2">Dr. Kyle's methodology is already operational across multiple clinics and international markets. Thousands of patients treated. Measurable outcomes. Government validation.</div>
+
+    <div class="grid g3 reveal reveal-d2">
+      <div class="card card-teal">
+        <h3>3 U.S. Clinics + Dubai</h3>
+        <p>Lake Charles (LA), Atlanta (GA), Austin (TX), and Dubai. Full NeuroSage protocol running daily: sensory integration, reflex exercises, photobiomodulation, motor rehabilitation, and vestibular training.</p>
+        <div class="tag" style="background:rgba(0,184,148,.12);color:var(--teal)">Operating Now</div>
+      </div>
+      <div class="card card-gold">
+        <h3>Dubai — Government Contract</h3>
+        <p>The Dubai Ministry of Health contracts Dr. Kyle to deliver NeuroSage services in-country — validating both the clinical methodology and international demand at the highest institutional level.</p>
+        <div class="tag" style="background:var(--gold-f);color:var(--gold)">Government Validation</div>
+      </div>
+      <div class="card card-blue">
+        <h3>ATEC Outcome Measurement</h3>
+        <p>Autism Treatment Evaluation Checklist administered at baseline and throughout program. Objective, quantifiable outcome tracking that proves the model, justifies pricing, and builds the evidence base.</p>
+        <div class="tag" style="background:rgba(52,152,219,.12);color:var(--blue)">Data-Driven</div>
+      </div>
+    </div>
+
+    <div class="stats reveal reveal-d3">
+      <div class="stat"><div class="stat-v" style="color:var(--gold)">4</div><div class="stat-l">Operational Clinics<br>(2 Countries)</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--gold)">$25K–$100K+</div><div class="stat-l">Revenue Per Family<br>(Institutes)</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--gold)">4,500+</div><div class="stat-l">Practitioner Network<br>(Day 1)</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">Active</div><div class="stat-l">Dubai Generating<br>Revenue Now</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 5 — THE BEACHHEAD
+═══════════════════════════════════════════ -->
+<section class="slide glow-teal" id="s5">
+  <div class="slide-num">05</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--teal)">WHERE WE START</div>
+    <div class="title reveal reveal-d1">NeuroHome — Clinic-Grade<br>Autism Care, Delivered Home</div>
+    <div class="subtitle reveal reveal-d2">The beachhead. A 4-layer care model delivered via telehealth to families with children on the spectrum. This is where NeuroSolution launches, proves the model, collects the data, and builds the credibility that opens every vertical.</div>
+
+    <div class="mbox reveal reveal-d2" style="border-left-color:var(--teal)">
+      <div class="mbox-label">ASD Treatment Market</div>
+      <div class="mbox-val" style="color:var(--teal)">$7B → $15B by 2036</div>
+      <div class="mbox-desc">ABA therapy dominates at $8B (2026) but is widely criticized for compliance-based approach and 12–18 month waitlists. No dominant home-based platform player exists.</div>
+    </div>
+
+    <div class="stats reveal reveal-d2">
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">5.4M</div><div class="stat-l">Americans<br>with ASD</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">250K–350K</div><div class="stat-l">Families Actively<br>Seeking Help</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">12–18 mo</div><div class="stat-l">Average ABA<br>Waitlist</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">$40K–$80K</div><div class="stat-l">Annual ABA Cost<br>(Our Target Market)</div></div>
+    </div>
+
+    <div class="two-col reveal reveal-d3">
+      <div>
+        <div class="card card-teal" style="margin-bottom:16px">
+          <h3>Why ABA Families Switch</h3>
+          <p>Compliance-based methodology that targets behaviors, not brain function. Rigid 30–40 hour/week in-clinic schedules. Outcomes that plateau. And a 12–18 month waitlist just to start — while the neurological window for maximum impact closes.</p>
+        </div>
+        <div class="card card-teal">
+          <h3>The NeuroHome Advantage</h3>
+          <p>2x the contact hours of our closest competitor at a lower price point. Home-based delivery via NeuroSage Hub. Weekly OT/PT tele-supervision + dedicated concierge + MD oversight = a 4-layer care model no one else offers.</p>
+        </div>
+      </div>
+      <div>
+        <div class="callout co-teal">
+          <h4>Why NeuroSolution Wins</h4>
+          <ul>
+            <li>Only integrated home platform with 4 care layers (clinician, concierge, MD, platform)</li>
+            <li>$9.7K–$17.9K intensive + $1,200–$2,500/mo ongoing = recurring revenue with lifetime LTV</li>
+            <li>NeuroSage Hub is a software moat — families get a platform, not just sessions</li>
+            <li>Telehealth via interstate compacts enables national scale without clinic buildouts</li>
+            <li>ABA waitlists = ready-made market of families who can start today</li>
+          </ul>
+        </div>
+        <div class="callout co-gold">
+          <h4>Pilot → Everything</h4>
+          <p>10–15 families in Georgia completing the 12-week program with strong ATEC data is the single domino. This proves the clinical model, validates unit economics, and creates the evidence base that unlocks every vertical on this map.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SLIDE 6 — SCALE ENGINE
+═══════════════════════════════════════════ -->
+<section class="slide glow-teal" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--blue)">THE SCALE ENGINE</div>
+    <div class="title reveal reveal-d1">Clinician Certification +<br>NeuroSage Hub SaaS</div>
+    <div class="subtitle reveal reveal-d2">74-hour OT/PT certification that trains clinicians on Dr. Kyle's exact methodology. A B2B revenue engine that solves the scale bottleneck — every certified clinician becomes a distribution node.</div>
+
+    <div class="mbox reveal reveal-d2" style="border-left-color:var(--blue)">
+      <div class="mbox-label">ABA Therapy Market (Primary Competitor)</div>
+      <div class="mbox-val" style="color:var(--blue)">$8B</div>
+      <div class="mbox-desc">Home-based therapy advancing at 13% CAGR. Telehealth/remote supervision at 14% CAGR. NeuroSolution sits at the intersection of both trends.</div>
+    </div>
+
+    <div class="grid g3 reveal reveal-d3">
+      <div class="card card-teal">
+        <h3>74-Hour Certification</h3>
+        <p>L1: core SNA protocol. L2: device modules with strict competency gates. Clinicians pay to certify and gain patient pipeline access — a self-funding workforce engine.</p>
+        <div class="tag" style="background:rgba(0,184,148,.12);color:var(--teal)">Revenue Multiplier</div>
+      </div>
+      <div class="card card-blue">
+        <h3>NeuroSage Hub — B2B SaaS</h3>
+        <p>Licensable platform for any functional neurology practice. Multi-role access: clinician, MD, concierge, family, caregiver. Protocol delivery, ATEC tracking, AI lab interpretation, and case management.</p>
+        <div class="tag" style="background:rgba(52,152,219,.12);color:var(--blue)">Platform Revenue</div>
+      </div>
+      <div class="card card-purple">
+        <h3>Education &amp; CE Courses</h3>
+        <p>CEU-eligible practitioner training ($99–$2K/course). Parent education. Conferences across all 4 clinical domains. Authority-building top-of-funnel that feeds the certification pipeline.</p>
+        <div class="tag" style="background:rgba(155,89,182,.12);color:var(--purple)">Authority Engine</div>
+      </div>
+    </div>
+
+    <div class="callout co-teal reveal reveal-d3">
+      <h4>The Self-Reinforcing Flywheel</h4>
+      <ul>
+        <li>Every certified clinician becomes a distribution node — they bring their own patients</li>
+        <li>More clinicians → more families → more data → better protocols → more clinicians</li>
+        <li>Hub SaaS creates recurring B2B revenue independent of patient volume</li>
+        <li>Certification is both a quality gate (bottleneck) and a moat (unreplicable training)</li>
+        <li>AI + Lab Engine gets smarter with every patient — potential standalone B2B licensing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 7 — MARKET EXPANSION
+═══════════════════════════════════════════ -->
+<section class="slide glow-gold" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--cyan)">MARKET EXPANSION</div>
+    <div class="title reveal reveal-d1">Dyslexia, TBI &amp; Stroke</div>
+    <div class="subtitle reveal reveal-d2">Same core science, same platform, same clinician infrastructure — three populations that multiply the addressable market to $70B+. Each requires minimal protocol modification. The ASD pilot data is the credential that opens these doors.</div>
+
+    <div class="mbox reveal reveal-d2" style="border-left-color:var(--cyan)">
+      <div class="mbox-label">Combined Additional Addressable Market</div>
+      <div class="mbox-val" style="color:var(--cyan)">$70B+</div>
+      <div class="mbox-desc">Dyslexia ($34B → $67B by 2035 at 7% CAGR). TBI ($4B–$10B). Stroke rehabilitation ($22B+). Layered on the ASD base using the same infrastructure.</div>
+    </div>
+
+    <div class="grid g3 reveal reveal-d2">
+      <div class="card card-cyan">
+        <h3>Dyslexia — The Market Doubler</h3>
+        <p>5–10M school-age children in the U.S. 10–17% of population. Near-identical SNA protocol. No competing home-based neurodevelopmental platform exists. Could become larger than ASD within 5 years.</p>
+        <div class="tag" style="background:rgba(0,206,201,.12);color:var(--cyan)">Phase 2 — Post-ASD</div>
+      </div>
+      <div class="card card-orange">
+        <h3>TBI / Brain Injury</h3>
+        <p>5.3M Americans with TBI-related disability. 69M cases/year globally. PBM has the strongest clinical evidence (Harvard/MGH). Opens workers' comp, VA benefits, and personal injury payer channels.</p>
+        <div class="tag" style="background:rgba(243,156,18,.12);color:var(--orange)">Phase 2 — Institutional</div>
+      </div>
+      <div class="card card-pink">
+        <h3>Stroke Rehabilitation</h3>
+        <p>7M stroke survivors in the U.S. 800K new strokes/year. 15M annually worldwide. Massive demand for home-based neurorehab. Opens Medicare as a payer. Market growing at 9–11% CAGR.</p>
+        <div class="tag" style="background:rgba(232,67,147,.12);color:var(--pink)">Phase 3 — Medicare</div>
+      </div>
+    </div>
+
+    <div class="stats reveal reveal-d3">
+      <div class="stat"><div class="stat-v" style="color:var(--cyan)">10–17%</div><div class="stat-l">Population<br>with Dyslexia</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--orange)">69M</div><div class="stat-l">TBI Cases/Year<br>Globally</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--pink)">15M</div><div class="stat-l">Strokes/Year<br>Worldwide</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">6x</div><div class="stat-l">TAM Multiplier<br>vs. ASD Alone</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 8 — GLOBAL INSTITUTES
+═══════════════════════════════════════════ -->
+<section class="slide glow-teal" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--gold)">GLOBAL TREATMENT INSTITUTES</div>
+    <div class="title reveal reveal-d1">Centers of Excellence —<br>Like Mayo Clinic, for the Brain</div>
+    <div class="subtitle reveal reveal-d2">Full-service neurological destinations with advanced protocols, regenerative biologics, and the complete 4-pillar clinical stack. Medical tourism destinations where families fly in and clinicians train on-site.</div>
+
+    <div class="mbox reveal reveal-d2">
+      <div class="mbox-label">Global Medical Tourism Market</div>
+      <div class="mbox-val" style="color:var(--gold)">$76B–$140B</div>
+      <div class="mbox-desc">Growing 8–16% CAGR. Specialty clinics hold 53% share. With 3–5 institutes at $5M–$15M each = $15M–$75M. At full 6-region deployment: $200M–$500M.</div>
+    </div>
+
+    <div class="reveal reveal-d3" style="margin-bottom:28px">
+      <div class="region"><div class="region-name">Atlanta, USA</div><div class="region-desc">Flagship U.S. clinic. Full NeuroSage protocol operational. Anchor for domestic institute model and clinician training center.</div><div class="region-phase" style="color:var(--teal)">NOW</div></div>
+      <div class="region"><div class="region-name">Dubai (Active)</div><div class="region-desc">Government contract. Ministry of Health engagement. Validates demand and model for owned institutes.</div><div class="region-phase" style="color:var(--teal)">NOW</div></div>
+      <div class="region"><div class="region-name">Middle East / N. Africa</div><div class="region-desc">Riyadh, Doha, Abu Dhabi, Cairo. JVs with local healthcare investors.</div><div class="region-phase" style="color:var(--gold)">PH 2</div></div>
+      <div class="region"><div class="region-name">Europe</div><div class="region-desc">London, Zurich, Barcelona. 4,500+ European practitioners = built-in referral pipelines.</div><div class="region-phase" style="color:var(--text3)">PH 3</div></div>
+      <div class="region"><div class="region-name">Asia Pacific</div><div class="region-desc">Singapore, Tokyo, Sydney. Regional licensing + JV equity structures.</div><div class="region-phase" style="color:var(--text3)">PH 4</div></div>
+      <div class="region"><div class="region-name">Americas</div><div class="region-desc">São Paulo, Mexico City, Toronto. Each institute = treatment hub + training center.</div><div class="region-phase" style="color:var(--text3)">PH 4</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 9 — THE FRONTIER
+═══════════════════════════════════════════ -->
+<section class="slide glow-gold" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--pink)">THE FRONTIER</div>
+    <div class="title reveal reveal-d1">Caregiver Company, Stem Cells<br>&amp; Products</div>
+    <div class="subtitle reveal reveal-d2">Three standalone verticals — each a significant business in its own right — that cross-sell into the core NeuroHome ecosystem.</div>
+
+    <div class="grid g3 reveal reveal-d2">
+      <div class="card card-emerald">
+        <h3>Certified Caregiver Company</h3>
+        <p>Greenfield category: specialized healthcare staffing for in-home neurodevelopmental care. Philippines Training Academy, visa sponsorship, U.S. family placement at $3K–$6K/mo. 5–7 day/week protocol execution.</p>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--gold);margin-top:12px">200 placements = $7M–$14M/year</div>
+        <div class="tag" style="background:rgba(0,184,148,.12);color:var(--emerald)">$50B+ Market</div>
+      </div>
+      <div class="card card-pink">
+        <h3>Stem Cell &amp; Regenerative</h3>
+        <p>NeuroSage protocols prepare the brain BEFORE regeneration — no other clinic does this. Intranasal delivery bypasses the blood-brain barrier. Panama active. Dubai pending. Exclusive biologics partnership with Accelerated Biosciences.</p>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--gold);margin-top:12px">$15K–$150K per treatment cycle</div>
+        <div class="tag" style="background:rgba(232,67,147,.12);color:var(--pink)">$18B → $55B+</div>
+      </div>
+      <div class="card card-gold">
+        <h3>Products &amp; Devices</h3>
+        <p>PBM devices, sensory tools, neurostimulation equipment. Protocol-required, not optional — creating recurring hardware revenue tied to clinical outcomes. Harvard/MGH research validates PBM extensively.</p>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--gold);margin-top:12px">Laser lease: 82–91% margin after cycle 1</div>
+        <div class="tag" style="background:var(--gold-f);color:var(--gold)">$15B TAM</div>
+      </div>
+    </div>
+
+    <div class="callout co-gold reveal reveal-d3">
+      <h4>Cross-Sell Architecture</h4>
+      <p>Every vertical feeds the others. NeuroHome families cross-sell into devices. Severe cases upsell to regenerative treatment at Dubai/Panama institutes. Caregiver placements cross-sell Hub subscriptions and device packages. Institute patients become NeuroHome telehealth subscribers for post-treatment monitoring. The ecosystem is self-reinforcing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 10 — ADJACENT MARKETS + TAM
+═══════════════════════════════════════════ -->
+<section class="slide glow-teal" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--gold)">TOTAL ADDRESSABLE MARKET</div>
+    <div class="title reveal reveal-d1">Adjacent Verticals &amp;<br>Government Channels</div>
+    <div class="subtitle reveal reveal-d2">Every vertical below uses the same core SNA science, the same NeuroSage Hub platform, and the same certified clinician network. Each opens new institutional payer channels.</div>
+
+    <div class="reveal reveal-d2" style="margin-bottom:40px">
+      <div class="fw" style="border-left:3px solid var(--red)"><div class="fw-from">DoD / VA TBI Programs</div><div class="fw-to">400K+ veterans with TBI/yr. Non-pharma neuromodulation. Federal contracts.</div></div>
+      <div class="fw" style="border-left:3px solid var(--red)"><div class="fw-from">TRICARE Military Families</div><div class="fw-to">Portable autism care across PCS moves. Solves 12–18mo waitlist.</div></div>
+      <div class="fw" style="border-left:3px solid var(--orange)"><div class="fw-from">Medicaid HCBS Waivers</div><div class="fw-to">Home-based, tech-assisted, clinician-supervised. Fits waiver structure.</div></div>
+      <div class="fw" style="border-left:3px solid var(--orange)"><div class="fw-from">School District Contracts</div><div class="fw-to">IEP services. ESA + direct district procurement.</div></div>
+      <div class="fw" style="border-left:3px solid var(--cyan)"><div class="fw-from">Sports / Concussion</div><div class="fw-to">Post-concussion protocols. Regen arm for elite athletes.</div></div>
+      <div class="fw" style="border-left:3px solid var(--purple)"><div class="fw-from">Aging / Neurodegeneration</div><div class="fw-to">Parkinson's, Alzheimer's, cognitive decline. $300B+ global TAM.</div></div>
+      <div class="fw" style="border-left:3px solid var(--emerald)"><div class="fw-from">Corporate Brain Wellness</div><div class="fw-to">Executive performance. Employer wellness contracts.</div></div>
+      <div class="fw" style="border-left:3px solid var(--pink)"><div class="fw-from">Addiction Recovery</div><div class="fw-to">Dopamine/Serotonin modulation IS the core of addiction neuroscience.</div></div>
+    </div>
+
+    <div class="reveal reveal-d3" style="margin-bottom:36px">
+      <div class="tam-row"><div class="tam-label">Alzheimer's / Dementia</div><div class="tam-wrap"><div class="tam-bar" style="width:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold))">$345B</div></div><div class="tam-val" style="color:var(--gold)">$345B</div></div>
+      <div class="tam-row"><div class="tam-label">Medical Tourism</div><div class="tam-wrap"><div class="tam-bar" style="width:40%;background:linear-gradient(90deg,#b45309,#f59e0b)">$140B</div></div><div class="tam-val" style="color:#f59e0b">$140B</div></div>
+      <div class="tam-row"><div class="tam-label">Gov / Military / VA</div><div class="tam-wrap"><div class="tam-bar" style="width:29%;background:linear-gradient(90deg,#b91c1c,#ef4444)">$100B</div></div><div class="tam-val" style="color:#ef4444">$100B</div></div>
+      <div class="tam-row"><div class="tam-label">Corporate Wellness</div><div class="tam-wrap"><div class="tam-bar" style="width:17%;background:linear-gradient(90deg,#0f766e,#14b8a6)">$60B</div></div><div class="tam-val" style="color:#14b8a6">$60B</div></div>
+      <div class="tam-row"><div class="tam-label">Healthcare Staffing</div><div class="tam-wrap"><div class="tam-bar" style="width:14%;background:var(--emerald)">$50B</div></div><div class="tam-val" style="color:var(--emerald)">$50B</div></div>
+      <div class="tam-row"><div class="tam-label">Dyslexia Treatment</div><div class="tam-wrap"><div class="tam-bar" style="width:10%;background:var(--cyan)">$34B</div></div><div class="tam-val" style="color:var(--cyan)">$34B</div></div>
+      <div class="tam-row"><div class="tam-label">Stroke Rehab</div><div class="tam-wrap"><div class="tam-bar" style="width:6%;background:var(--rose)">$22B</div></div><div class="tam-val" style="color:var(--rose)">$22B</div></div>
+      <div class="tam-row"><div class="tam-label">Stem Cell Therapy</div><div class="tam-wrap"><div class="tam-bar" style="width:5%;background:var(--purple)">$18B</div></div><div class="tam-val" style="color:var(--purple)">$18B</div></div>
+      <div class="tam-row"><div class="tam-label">Addiction Recovery</div><div class="tam-wrap"><div class="tam-bar" style="width:4%;background:var(--pink)">$15B</div></div><div class="tam-val" style="color:var(--pink)">$15B</div></div>
+      <div class="tam-row"><div class="tam-label">ASD / ABA Therapy</div><div class="tam-wrap"><div class="tam-bar" style="width:2.4%;background:var(--teal)">$8B</div></div><div class="tam-val" style="color:var(--teal)">$8B</div></div>
+      <div class="tam-row"><div class="tam-label">Sports Medicine</div><div class="tam-wrap"><div class="tam-bar" style="width:2.3%;background:var(--blue)">$8B</div></div><div class="tam-val" style="color:var(--blue)">$8B</div></div>
+      <div class="tam-row"><div class="tam-label">TBI Treatment</div><div class="tam-wrap"><div class="tam-bar" style="width:1.2%;background:var(--orange)">$4B</div></div><div class="tam-val" style="color:var(--orange)">$4B</div></div>
+    </div>
+
+    <div class="callout co-gold reveal reveal-d3">
+      <h4>What This Means</h4>
+      <p>ASD — where we start — is the <em>smallest</em> market in the ecosystem. The aging/neurodegeneration market alone is 43x larger. And the core science is identical across all of them. Combined addressable market: <strong style="color:var(--gold)">$300B+</strong>. NeuroSolution doesn't need to capture even 1% to build a multi-billion dollar company.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 11 — TWO ECOSYSTEMS (SVG)
+═══════════════════════════════════════════ -->
+<section class="slide" id="s6" style="background:var(--bg)">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--gold)">THE COUNTER-MODEL</div>
+    <div class="title reveal reveal-d1">Two Ecosystems.<br>One Replaces the Other.</div>
+
+    <div class="two-col reveal reveal-d2" style="gap:0;align-items:center">
+      <!-- LEFT: BIG PHARMA -->
+      <div style="text-align:center;padding-right:24px;border-right:1px solid rgba(201,168,76,0.08)">
+        <div style="font-family:var(--mono);font-size:8px;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px">The Incumbent Model</div>
+        <svg viewBox="0 0 360 360" width="100%" style="max-width:360px" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="cg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e1200"/><stop offset="100%" stop-color="#0f0800"/></radialGradient></defs>
+          <circle cx="180" cy="180" r="160" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="1"/>
+          <circle cx="180" cy="180" r="110" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1"/>
+          <line x1="180" y1="180" x2="180" y2="35" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="305" y2="90" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="325" y2="220" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="260" y2="316" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="100" y2="316" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="35" y2="220" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="55" y2="90" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="180" cy="180" r="44" fill="url(#cg)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+          <text x="180" y="176" text-anchor="middle" font-family="Space Mono" font-size="8" fill="#c9a84c" letter-spacing="0.05em">BIG PHARMA</text>
+          <text x="180" y="188" text-anchor="middle" font-family="Space Mono" font-size="7" fill="rgba(201,168,76,0.5)">$1.6T</text>
+          <circle cx="180" cy="35" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="180" y="32" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">MED</text><text x="180" y="41" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">SCHOOLS</text>
+          <circle cx="305" cy="90" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="305" y="87" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">FDA /</text><text x="305" y="96" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">REGS</text>
+          <circle cx="325" cy="220" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="325" y="217" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">INSURANCE</text><text x="325" y="226" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">COS.</text>
+          <circle cx="260" cy="316" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="260" y="313" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">HOSPITAL</text><text x="260" y="322" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">SYSTEMS</text>
+          <circle cx="100" cy="316" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="100" y="313" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">CLINICAL</text><text x="100" y="322" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">JOURNALS</text>
+          <circle cx="35" cy="220" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="35" y="217" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">CONGRESS</text><text x="35" y="226" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">LOBBY</text>
+          <circle cx="55" cy="90" r="22" fill="#141414" stroke="rgba(201,168,76,0.25)" stroke-width="1"/><text x="55" y="87" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">MEDIA</text><text x="55" y="96" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#888">ADS</text>
+          <text x="180" y="350" text-anchor="middle" font-family="Space Mono" font-size="6" fill="rgba(201,168,76,0.2)" letter-spacing="0.14em">DESIGNED TO CAPTURE</text>
+        </svg>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-top:12px;line-height:1.7">Centralized. Closed. Monetizes dysfunction.<br>Controls who knows what.</div>
+      </div>
+      <!-- RIGHT: NEUROSOLUTION -->
+      <div style="text-align:center;padding-left:24px">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--teal);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px">The Restoration Model</div>
+        <svg viewBox="0 0 360 360" width="100%" style="max-width:360px" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="ng" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#002a22"/><stop offset="100%" stop-color="#000f0a"/></radialGradient></defs>
+          <circle cx="180" cy="180" r="160" fill="none" stroke="rgba(0,184,148,0.06)" stroke-width="1"/>
+          <circle cx="180" cy="180" r="110" fill="none" stroke="rgba(0,184,148,0.1)" stroke-width="1"/>
+          <line x1="180" y1="180" x2="180" y2="35" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="305" y2="90" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="325" y2="220" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="260" y2="316" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="100" y2="316" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="35" y2="220" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/><line x1="180" y1="180" x2="55" y2="90" stroke="rgba(0,184,148,0.3)" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="180" cy="180" r="44" fill="url(#ng)" stroke="rgba(0,184,148,0.7)" stroke-width="1.5"/>
+          <text x="180" y="173" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#00b894" letter-spacing="0.04em">NEURO</text>
+          <text x="180" y="184" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#00b894" letter-spacing="0.04em">SOLUTION</text>
+          <text x="180" y="194" text-anchor="middle" font-family="Space Mono" font-size="5" fill="rgba(0,184,148,0.5)">SNA CORE</text>
+          <circle cx="180" cy="35" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="180" y="32" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">NEURO</text><text x="180" y="41" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">HOME</text>
+          <circle cx="305" cy="90" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="305" y="87" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">CLINICIAN</text><text x="305" y="96" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">NETWORK</text>
+          <circle cx="325" cy="220" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="325" y="217" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">NEUROSAGE</text><text x="325" y="226" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">HUB</text>
+          <circle cx="260" cy="316" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="260" y="313" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">GLOBAL</text><text x="260" y="322" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">INSTITUTES</text>
+          <circle cx="100" cy="316" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="100" y="313" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">CAREGIVER</text><text x="100" y="322" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">CO.</text>
+          <circle cx="35" cy="220" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="35" y="217" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">STEM CELL</text><text x="35" y="226" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">REGEN</text>
+          <circle cx="55" cy="90" r="22" fill="#0d1f1a" stroke="rgba(0,184,148,0.4)" stroke-width="1"/><text x="55" y="87" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">GOV /</text><text x="55" y="96" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#4db8a4">MILITARY</text>
+          <text x="180" y="350" text-anchor="middle" font-family="Space Mono" font-size="6" fill="rgba(0,184,148,0.3)" letter-spacing="0.14em">DESIGNED TO RESTORE</text>
+        </svg>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--teal);margin-top:12px;line-height:1.7">Distributed. Open. Restores function.<br>Expands who knows what is possible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 12 — 1,000 FAMILIES INFLECTION
+═══════════════════════════════════════════ -->
+<section class="slide glow-teal" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="label reveal" style="color:var(--teal)">THE INFLECTION POINT</div>
+    <div class="title reveal reveal-d1">1,000 Families Changes<br>Everything</div>
+
+    <div class="reveal reveal-d2" style="text-align:center;padding:48px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);margin-bottom:40px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,184,148,0.06) 0%,transparent 70%)"></div>
+      <div style="position:relative">
+        <div style="font-family:var(--serif);font-size:clamp(64px,10vw,100px);color:var(--teal);line-height:1">1,000</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.18em;text-transform:uppercase;margin-top:8px">Families — The Inflection Point</div>
+      </div>
+    </div>
+
+    <div class="stats reveal reveal-d2">
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">$1.8M</div><div class="stat-l">Monthly Recurring<br>Revenue</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--teal)">$21.6M</div><div class="stat-l">Annual Run Rate<br>NeuroHome Alone</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--gold)">$120K+</div><div class="stat-l">10-Year LTV<br>Per Family</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--gold)">0.4%</div><div class="stat-l">Active-Seeker Market<br>Required</div></div>
+    </div>
+
+    <div class="grid g3 reveal reveal-d3">
+      <div class="card card-teal">
+        <h3>What 1,000 Unlocks</h3>
+        <p>ATEC data at scale → government contract eligibility → insurance coverage discussions → military/VA pursuit. The evidence threshold that transforms a clinical model into a policy argument.</p>
+      </div>
+      <div class="card card-gold">
+        <h3>The Unit Economics</h3>
+        <p>$1,800/month per family. Gross margins above 60% at scale. Hub SaaS adds B2B revenue atop patient revenue. Device revenue creates protocol-locked recurring demand alongside subscription.</p>
+      </div>
+      <div class="card card-blue">
+        <h3>The Path There</h3>
+        <p>10–15 families in Georgia completes Phase 1. ATEC data triggers Phase 2 national telehealth rollout via interstate compacts. 4,500+ Nutrition Collective practitioners = immediate referral infrastructure.</p>
+      </div>
+    </div>
+
+    <div class="callout co-gold reveal reveal-d3">
+      <h4>And This Is Just Ring 1</h4>
+      <p>The $21.6M run rate at 1,000 families is based on the telehealth subscription alone. It doesn't include the caregiver company, physical clinics, institutes, government contracts, or any adjacent vertical. Layer in even one additional business unit and the math changes dramatically. At 1,000 families you have enough outcome data to unlock government pilot programs, validate the franchise model, and begin institute expansion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 13 — THE AUDACITY
+═══════════════════════════════════════════ -->
+<section class="slide glow-gold" id="s6">
+  <div class="slide-num">06</div>
+  <div class="slide-inner">
+    <div class="two-col" style="align-items:center;min-height:70vh">
+      <div>
+        <div class="label reveal" style="color:var(--gold)">THE AUDACITY</div>
+        <div class="title reveal reveal-d1" style="margin-bottom:28px">We Are Building<br>the Next Iteration<br>of Big Pharma.</div>
+        <p class="reveal reveal-d2" style="font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:24px">The same reach. The same institutional depth. The same infrastructure — clinical standards, education systems, distribution networks, payer channels, policy relationships, and a global physical footprint.</p>
+        <p class="reveal reveal-d2" style="font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:32px">Built from scratch. Built to last a century. <strong style="color:var(--text)">Built on the one premise Big Pharma could never survive: that it only profits when you actually get better.</strong></p>
+        <div class="reveal reveal-d3" style="padding:20px 24px;border:1px solid rgba(201,168,76,0.15);border-left:3px solid var(--gold);background:rgba(201,168,76,0.03);border-radius:var(--r)">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--gold);line-height:2.0">
+            Clinicians certify into it.<br>
+            Franchisees build inside it.<br>
+            Families are restored by it.<br>
+            Investors own a piece of it.<br>
+            <span style="color:var(--text3)">The infrastructure is the moat.</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d2" style="text-align:center">
+        <svg viewBox="0 0 400 400" width="100%" style="max-width:480px" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(0,184,148,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+          <circle cx="200" cy="200" r="155" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1" stroke-dasharray="4,4"/>
+          <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(52,152,219,0.1)" stroke-width="1"/>
+          <circle cx="200" cy="200" r="85" fill="none" stroke="rgba(0,184,148,0.15)" stroke-width="1"/>
+          <circle cx="200" cy="200" r="50" fill="none" stroke="rgba(0,184,148,0.3)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="30" fill="rgba(0,184,148,0.08)"/>
+          <text x="200" y="196" text-anchor="middle" font-family="Space Mono" font-size="7" font-weight="700" fill="#00b894">NEURO</text>
+          <text x="200" y="207" text-anchor="middle" font-family="Space Mono" font-size="7" font-weight="700" fill="#00b894">SOLUTION</text>
+          <text x="200" y="130" text-anchor="middle" font-family="Space Mono" font-size="7" fill="#00b894">NEUROHOME TELEHEALTH</text>
+          <text x="200" y="140" text-anchor="middle" font-family="Space Mono" font-size="5.5" fill="rgba(0,184,148,0.5)">ASD · Dyslexia · TBI · Stroke</text>
+          <text x="100" y="200" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#3498db">CLINICIAN</text>
+          <text x="100" y="210" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#3498db">NETWORK</text>
+          <text x="300" y="200" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#3498db">PHYSICAL</text>
+          <text x="300" y="210" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#3498db">CLINICS</text>
+          <text x="90" y="130" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#c9a84c">GLOBAL</text>
+          <text x="90" y="140" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#c9a84c">INSTITUTES</text>
+          <text x="310" y="130" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#c9a84c">CAREGIVER</text>
+          <text x="310" y="140" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#c9a84c">COMPANY</text>
+          <text x="200" y="325" text-anchor="middle" font-family="Space Mono" font-size="6.5" fill="#c9a84c">STEM CELL &amp; REGENERATIVE</text>
+          <text x="82" y="265" text-anchor="middle" font-family="Space Mono" font-size="6" fill="#b91c1c">GOV / VA</text>
+          <text x="82" y="275" text-anchor="middle" font-family="Space Mono" font-size="5" fill="rgba(185,28,28,0.6)">DoD · Medicaid</text>
+          <text x="200" y="25" text-anchor="middle" font-family="Space Mono" font-size="5.5" fill="#606070">SPORTS · AGING · CORPORATE · ADDICTION</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 14 — THE ENDGAME
+═══════════════════════════════════════════ -->
+<section class="slide" id="s6" style="background:radial-gradient(ellipse at 50% 50%,#0d0d14,var(--bg))">
+  <div class="slide-num">06</div>
+  <div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh">
+    <div class="reveal" style="width:140px;height:140px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:48px;background:radial-gradient(circle,#1a1a1a 50%,#080808);box-shadow:0 0 80px rgba(201,168,76,0.12)">
+      <span style="font-family:var(--mono);font-size:32px;color:var(--gold)">NS</span>
+    </div>
+    <h1 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(32px,5vw,54px);font-weight:700;line-height:1.1;margin-bottom:40px">The Endgame<br><span style="color:var(--gold)">Is Not a Valuation.</span></h1>
+    <div class="reveal reveal-d2" style="font-family:var(--mono);font-size:12px;color:var(--text2);line-height:2.4;max-width:640px">
+      It is a child who was told her brain was the problem —<br>
+      learning to read at nine.<br><br>
+      A veteran whose headaches stopped after twenty years<br>
+      of being told to manage them.<br><br>
+      A family that flew to Dubai because the American system<br>
+      had nothing left to offer — and came home different.<br><br>
+      <span style="color:var(--teal)">
+        This is what functional neurology looks like<br>
+        when the infrastructure finally catches up to the science.
+      </span>
+      <br><br>
+      One foundation. One generation.<br>
+      <span style="color:var(--gold)">One opportunity to build it.</span>
+    </div>
+    <div class="reveal reveal-d3" style="margin-top:56px;padding-top:24px;border-top:1px solid var(--border2)">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.16em">NEUROSOLUTION &nbsp;·&nbsp; CONFIDENTIAL &nbsp;·&nbsp; APRIL 2026</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// Slide counter
+const slides=document.querySelectorAll('.slide');
+const counter=document.getElementById('counter');
+const total=slides.length;
+const slideObs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting&&en.intersectionRatio>.35){const i=[...slides].indexOf(en.target)+1;counter.textContent=String(i).padStart(2,'0')+' / '+String(total).padStart(2,'0')}})},{threshold:.35});
+slides.forEach(s=>slideObs.observe(s));
+
+// Keyboard nav
+document.addEventListener('keydown',e=>{
+  const cur=Array.from(slides).findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-100&&r.top<innerHeight/2});
+  if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();const n=slides[Math.min(cur+1,total-1)];if(n)n.scrollIntoView({behavior:'smooth'})}
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();const p=slides[Math.max(cur-1,0)];if(p)p.scrollIntoView({behavior:'smooth'})}
+});
+
+// Scroll-triggered reveal animations
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+</script>
+</body>
+</html>
